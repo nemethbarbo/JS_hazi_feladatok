@@ -150,76 +150,92 @@ akarunk átváltani Ft-ba, majd írja ki, hogy hány Ft az átváltott euró.*/
 felszínét!*/
 
 
-/* 14. Feladat - Készítsünk függvényt tombFeltolt() néven, amely feltölt véletlen számokkal egy tömböt a 
-felhasználótól érkező és véletlenszerű bemenő paraméterekkel. Az első paraméter legyen az 
-elemszám (hány darab elem legyen a tömbben)  ez legyen véletlen szám 5-20 között, a második a 
-véletlen számok alsó határa, a harmadik pedig a felső határa, melyeket a felhasználó adjon meg. A 
-függvény visszatérése tömb adatszerkezet legyen! A következő feladatokat függvények segítségével 
-oldjuk meg!
-a. Hozzunk létre egy függvényt, amely kiírja a tömb elemeit a HTML kimenetre egymás 
+/*a. Hozzunk létre egy függvényt, amely kiírja a tömb elemeit a HTML kimenetre egymás 
 mellé vesszővel elválasztva, utolsó elem után ne legyen vessző!*/
-
+    function tombKiir() {
+        document.getElementById("randomArray").innerHTML = tombFeltolt();
+    }
 /*b. Hozzunk létre függvényt, amely a páros elemek összegével tér vissza! Az eredményt a 
 HTML kimeneten jelenítsük meg!*/
-
+    function selectEven() {
+        let randomNumberArray = tombFeltolt();
+        let filteredArray = [];
+        randomNumberArray.forEach(element => {
+            if (element % 2 == 0) {
+                filteredArray.push(element);
+            }
+        })
+        document.getElementById("randomArray").innerHTML = "A tömb páros számai: " + filteredArray;
+    }
 /*c. Hozzunk létre függvényt, amelynek visszatérése a páratlan elemek átlaga! Az 
 eredményt a HTML kimeneten jelenítsük meg!*/
-
+    function selectOddAvg() {
+        let randomNumberArray = tombFeltolt();
+        let filteredArray = [];
+        let sum = 0;
+        randomNumberArray.forEach(element => {
+            if (element % 2 != 0) {
+                filteredArray.push(element);
+                sum += element
+            }
+        })
+        document.getElementById("randomArray").innerHTML = "A páratlan számok átlaga: " + sum / filteredArray.length;
+    }
 /*d. Legkisebb érték meghatározására hozzunk létre egy függvényt. Az eredményt a HTML 
 kimeneten jelenítsük meg!*/
-	function selectMin() {
-        	let minValue = Math.min(...tombFeltolt())
-        	document.getElementById("randomArray").innerHTML = "A tömb legkissebb értéke: " + minValue;
-    	}
+    function selectMin() {
+        let minValue = Math.min(...tombFeltolt())
+        document.getElementById("randomArray").innerHTML = "A tömb legkissebb értéke: " + minValue;
+    }
 /*e. Legkisebb értékű elem indexével is térjen vissza egy függvény. Több ilyen érték is lehet.
 Az eredményt a HTML kimeneten jelenítsük meg!*/
-	function selectMinIndex() {
-        	let randomNumberArray = tombFeltolt()
-        	let minValue = Math.min(...randomNumberArray);
-        	let minValueIndexArray = [];
-        	for (i = 0; i < randomNumberArray.length; i++) {
-            		if (randomNumberArray[i] == minValue) {
-                		minValueIndexArray.push(i)
-            		}
-        	}
-        	document.getElementById("randomArray").innerHTML = "A random tömb legkisebb értékei a következő indexen szerepelnek: " + minValueIndexArray;
-    	}
+    function selectMinIndex() {
+        let randomNumberArray = tombFeltolt()
+        let minValue = Math.min(...randomNumberArray);
+        let minValueIndexArray = [];
+        for (i = 0; i < randomNumberArray.length; i++) {
+            if (randomNumberArray[i] == minValue) {
+                minValueIndexArray.push(i)
+            }
+        }
+        document.getElementById("randomArray").innerHTML = "A random tömb legkisebb értékei a következő indexen szerepelnek: " + minValueIndexArray;
+    }
 /*f. A tömbből véletlenszerűen jelenítsünk meg 1 db elemet! Az eredményt felugró 
 ablakban jelenítsük meg!*/
-	function selectRandomElement() {
-        	let randomNumberArray = tombFeltolt();
-        	let randomIndex = Math.floor(Math.random() * randomNumberArray.length);
-        	alert(randomNumberArray[randomIndex]);
-    	}
+    function selectRandomElement() {
+        let randomNumberArray = tombFeltolt();
+        let randomIndex = Math.floor(Math.random() * randomNumberArray.length);
+        alert(randomNumberArray[randomIndex]);
+    }
 /*g. A listából minden 5. elemet jelenítsünk meg a HTML kiementen!*/
-	function selectAllFifth() {
-        	let randomNumberArray = tombFeltolt();
-        	let allFifthElement = [];
-        	for (i = 0; i < randomNumberArray.length; i++) {
-            		if (i % 5 == 0) {
-                		allFifthElement.push(randomNumberArray[i])
-           		}
-        	}
-        	console.log(allFifthElement);
-        	document.getElementById("randomArray").innerHTML = "A random tömb minden 5. eleme: " + allFifthElement;
-    	}
-     
-/*h. A HTML kimeneten jelenítsük meg a hárommal maradék nélkül osztható számokat!
+    function selectAllFifth() {
+        let randomNumberArray = tombFeltolt();
+        let allFifthElement = [];
+        for (i = 0; i < randomNumberArray.length; i++) {
+            if (i % 5 == 0) {
+                allFifthElement.push(randomNumberArray[i])
+            }
+        }
+        console.log(allFifthElement);
+        document.getElementById("randomArray").innerHTML = "A random tömb minden 5. eleme: " + allFifthElement;
+    }
+/* h. A HTML kimeneten jelenítsük meg a hárommal maradék nélkül osztható számokat!
 Amennyiben esetleg nem volt ilyen, arról is tájékoztassuk a felhasználót!*/
-	function selectDivOfThree() {
-    		let randomNumberArray = tombFeltolt();
-   		let divOfThree = [];
-    		randomNumberArray.forEach(num => {
-       			if (num % 3 == 0) {
-            			divOfThree.push(num)
-        		};
-    		});
-    		if (divOfThree.length > 0) {
-        		document.getElementById("randomArray").innerHTML = "A random tömb 3-al osztható elemei: " + divOfThree
-   		} else {
-        		document.getElementById("randomArray").innerHTML = "Nem keletkezett 3-al osztható szám."
-    		};
-	}
+function selectDivOfThree() {
+    let randomNumberArray = tombFeltolt();
+    let divOfThree = [];
+    randomNumberArray.forEach(num => {
+        if (num % 3 == 0) {
+            divOfThree.push(num)
+        };
+    });
+    if (divOfThree.length > 0) {
+        document.getElementById("randomArray").innerHTML = "A random tömb 3-al osztható elemei: " + divOfThree;
+    } else {
+        document.getElementById("randomArray").innerHTML = "Nem keletkezett 3-al osztható szám.";
+    };
+}
+
 
 
 /*15. Kérjük be a felhasználó tömegét kg-ban és magasságát cm-ben, majd számítsuk ki és írjuk a 

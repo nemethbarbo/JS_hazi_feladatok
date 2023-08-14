@@ -157,18 +157,41 @@ véletlen számok alsó határa, a harmadik pedig a felső határa, melyeket a f
 függvény visszatérése tömb adatszerkezet legyen! A következő feladatokat függvények segítségével 
 oldjuk meg!
 a. Hozzunk létre egy függvényt, amely kiírja a tömb elemeit a HTML kimenetre egymás 
-mellé vesszővel elválasztva, utolsó elem után ne legyen vessző!
-b. Hozzunk létre függvényt, amely a páros elemek összegével tér vissza! Az eredményt a 
-HTML kimeneten jelenítsük meg!
-c. Hozzunk létre függvényt, amelynek visszatérése a páratlan elemek átlaga! Az 
-eredményt a HTML kimeneten jelenítsük meg!
-d. Legkisebb érték meghatározására hozzunk létre egy függvényt. Az eredményt a HTML 
-kimeneten jelenítsük meg!
-e. Legkisebb értékű elem indexével is térjen vissza egy függvény. Több ilyen érték is lehet.
-Az eredményt a HTML kimeneten jelenítsük meg!
-f. A tömbből véletlenszerűen jelenítsünk meg 1 db elemet! Az eredményt felugró 
-ablakban jelenítsük meg!
-g. A listából minden 5. elemet jelenítsünk meg a HTML kiementen!
+mellé vesszővel elválasztva, utolsó elem után ne legyen vessző!*/
+
+/*b. Hozzunk létre függvényt, amely a páros elemek összegével tér vissza! Az eredményt a 
+HTML kimeneten jelenítsük meg!*/
+
+/*c. Hozzunk létre függvényt, amelynek visszatérése a páratlan elemek átlaga! Az 
+eredményt a HTML kimeneten jelenítsük meg!*/
+
+/*d. Legkisebb érték meghatározására hozzunk létre egy függvényt. Az eredményt a HTML 
+kimeneten jelenítsük meg!*/
+	function selectMin() {
+        	let minValue = Math.min(...tombFeltolt())
+        	document.getElementById("randomArray").innerHTML = "A tömb legkissebb értéke: " + minValue;
+    	}
+/*e. Legkisebb értékű elem indexével is térjen vissza egy függvény. Több ilyen érték is lehet.
+Az eredményt a HTML kimeneten jelenítsük meg!*/
+	function selectMinIndex() {
+        	let randomNumberArray = tombFeltolt()
+        	let minValue = Math.min(...randomNumberArray);
+        	let minValueIndexArray = [];
+        	for (i = 0; i < randomNumberArray.length; i++) {
+            		if (randomNumberArray[i] == minValue) {
+                		minValueIndexArray.push(i)
+            		}
+        	}
+        	document.getElementById("randomArray").innerHTML = "A random tömb legkisebb értékei a következő indexen szerepelnek: " + minValueIndexArray;
+    	}
+/*f. A tömbből véletlenszerűen jelenítsünk meg 1 db elemet! Az eredményt felugró 
+ablakban jelenítsük meg!*/
+	function selectRandomElement() {
+        	let randomNumberArray = tombFeltolt();
+        	let randomIndex = Math.floor(Math.random() * randomNumberArray.length);
+        	alert(randomNumberArray[randomIndex]);
+    	}
+/*g. A listából minden 5. elemet jelenítsünk meg a HTML kiementen!*/
 	function selectAllFifth() {
         	let randomNumberArray = tombFeltolt();
         	let allFifthElement = [];
@@ -181,7 +204,7 @@ g. A listából minden 5. elemet jelenítsünk meg a HTML kiementen!
         	document.getElementById("randomArray").innerHTML = "A random tömb minden 5. eleme: " + allFifthElement;
     	}
      
-h. A HTML kimeneten jelenítsük meg a hárommal maradék nélkül osztható számokat!
+/*h. A HTML kimeneten jelenítsük meg a hárommal maradék nélkül osztható számokat!
 Amennyiben esetleg nem volt ilyen, arról is tájékoztassuk a felhasználót!*/
 	function selectDivOfThree() {
     		let randomNumberArray = tombFeltolt();

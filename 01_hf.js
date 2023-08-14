@@ -149,7 +149,21 @@ akarunk átváltani Ft-ba, majd írja ki, hogy hány Ft az átváltott euró.*/
 /* 13. Olvassuk be egy egyenes körkúp sugarát és magasságát, majd számoljuk ki belőle a térfogatát és a 
 felszínét!*/
 
-
+/* 14. Feladat - Készítsünk függvényt tombFeltolt() néven, amely feltölt véletlen számokkal egy tömböt a 
+felhasználótól érkező és véletlenszerű bemenő paraméterekkel. Az első paraméter legyen az 
+elemszám (hány darab elem legyen a tömbben)  ez legyen véletlen szám 5-20 között, a második a 
+véletlen számok alsó határa, a harmadik pedig a felső határa, melyeket a felhasználó adjon meg. A 
+függvény visszatérése tömb adatszerkezet legyen! A következő feladatokat függvények segítségével 
+oldjuk meg!*/
+function tombFeltolt(elemszam = randomNumberMinMax(5, 20), alsoHatar, felsoHatar) {
+    alsoHatar = getNumber("Alsó határ");
+    felsoHatar = getNumber("Felső határ");
+    let randomNumberArray = [];
+    for (i = 0; i < elemszam; i++) {
+        randomNumberArray.push(Math.floor(Math.random() * (felsoHatar - alsoHatar + 1) + alsoHatar));
+    };
+    return randomNumberArray;
+}
 /*a. Hozzunk létre egy függvényt, amely kiírja a tömb elemeit a HTML kimenetre egymás 
 mellé vesszővel elválasztva, utolsó elem után ne legyen vessző!*/
     function tombKiir() {

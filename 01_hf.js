@@ -169,8 +169,34 @@ Az eredményt a HTML kimeneten jelenítsük meg!
 f. A tömbből véletlenszerűen jelenítsünk meg 1 db elemet! Az eredményt felugró 
 ablakban jelenítsük meg!
 g. A listából minden 5. elemet jelenítsünk meg a HTML kiementen!
+	function selectAllFifth() {
+        	let randomNumberArray = tombFeltolt();
+        	let allFifthElement = [];
+        	for (i = 0; i < randomNumberArray.length; i++) {
+            		if (i % 5 == 0) {
+                		allFifthElement.push(randomNumberArray[i])
+           		}
+        	}
+        	console.log(allFifthElement);
+        	document.getElementById("randomArray").innerHTML = "A random tömb minden 5. eleme: " + allFifthElement;
+    	}
+     
 h. A HTML kimeneten jelenítsük meg a hárommal maradék nélkül osztható számokat!
 Amennyiben esetleg nem volt ilyen, arról is tájékoztassuk a felhasználót!*/
+	function selectDivOfThree() {
+    		let randomNumberArray = tombFeltolt();
+   		let divOfThree = [];
+    		randomNumberArray.forEach(num => {
+       			if (num % 3 == 0) {
+            			divOfThree.push(num)
+        		};
+    		});
+    		if (divOfThree.length > 0) {
+        		document.getElementById("randomArray").innerHTML = "A random tömb 3-al osztható elemei: " + divOfThree
+   		} else {
+        		document.getElementById("randomArray").innerHTML = "Nem keletkezett 3-al osztható szám."
+    		};
+	}
 
 
 /*15. Kérjük be a felhasználó tömegét kg-ban és magasságát cm-ben, majd számítsuk ki és írjuk a 
